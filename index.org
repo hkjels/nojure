@@ -1,0 +1,254 @@
+#+setupfile: setup.org
+:properties:
+:header-args: :mkdirp yes
+:end:
+#+title: Nojure
+#+subtitle: Norwegian dialect of Clojure
+
+
+#+html: <div id="repl" contenteditable="true"></div>
+
+* Standard library
+
+These tables below are used to translate most of the Clojure standard
+library. There are some more obscure parts in there that's available,
+but I've decided to hide some of that complexity as this will get you
+quite far.
+
+** Basics
+#+name: basics
+| Clojure     | Nojure            | Docstring                       |
+|-------------+-------------------+---------------------------------|
+| let         | sett              | (sett [x 1 y 2] (+ x y) ;; => 3 |
+| letfn       | sett-funksjon     |                                 |
+| if          | hvis              |                                 |
+| if-not      | hvis-ikke         |                                 |
+| when        | når               |                                 |
+| when-not    | når-ikke          |                                 |
+| when-let    | når-sett-funksjon |                                 |
+| when-first  | når-første        |                                 |
+| if-let      | hvis-sett         |                                 |
+| cond        | dersom            |                                 |
+| condp       | dersom-p          |                                 |
+| case        | hvis-at           |                                 |
+| when-some   | når-noe           |                                 |
+| if-some     | hvis-noe          |                                 |
+| not=        | ikke=             |                                 |
+| or          | eller             |                                 |
+| not         | ikke              |                                 |
+| map         | på-hver           |                                 |
+| map-indexed | på-hver-indeksert |                                 |
+| reduce      | reduser           |                                 |
+| for         | for               |                                 |
+| doseq       |                   |                                 |
+| dotimes     |                   |                                 |
+| while       | imens             |                                 |
+| identical?  | identisk?         |                                 |
+| compare     | sammenlign        |                                 |
+| true?       | sann?             |                                 |
+| false?      | usann?            |                                 |
+| instance?   | eksempel?         |                                 |
+| nil?        | null?             |                                 |
+| some?       | noe?              |                                 |
+| boolean?    | bolsk?            |                                 |
+| coll?       | samling?          |                                 |
+| comment     | kommentar         |                                 |
+
+** Numbers
+#+name: numbers
+| Clojure  | Nojure            | Docstring |
+|----------+-------------------+-----------|
+| zero?    | null?             |           |
+| even?    | par?              |           |
+| number?  | tall?             |           |
+| rand     | tilfeldig         |           |
+| rand-int | tilfeldig-heltall |           |
+
+** Atoms / state
+#+name: atoms
+| Clojure          | Nojure             | Docstring |
+|------------------+--------------------+-----------|
+| swap!            | skift!             |           |
+| reset!           | nullstill!         |           |
+| compare-and-set! | sammenlign-og-set! |           |
+| add-watch        | legg-til-lytter    |           |
+| remove-watch     | fjern-lytter       |           |
+| set-validator!   | sett-godkjenner!   |           |
+| get-validator!   | få-godkjenner!     |           |
+| assoc            | slutte-til         |           |
+| assoc-in         | slutte-til-i       |           |
+| atom             | lager              |           |
+| update           | oppdatere          |           |
+| update-in        | oppdatere-i       |           |
+
+** Functions
+#+name: functions
+| Clojure    | Nojure       | Docstring |
+|------------+--------------+-----------|
+| constantly | konstant     |           |
+| comp       | komp         |           |
+| complement | komplementer |           |
+| partial    | delvis       |           |
+| juxt       | nær-kontrast |           |
+| memoize    | memoriser    |           |
+| fnil       | dersom-null  |           |
+| every-pred | for-hver     |           |
+| some-fn    |              |           |
+| apply      | bruk         |           |
+| as->       | som->        |           |
+| cond->     | sjekk->      |           |
+| cond->>    | sjekk->>     |           |
+| some->     | noen->       |           |
+| some->>    | noen->>      |           |
+| fn?        | funksjon?    |           |
+| ifn?       | grensesnitt? |           |
+| print      | svar         |           |
+
+
+** Dictionary
+
+Here we consolidate all the tables into one big dictionary. Note that
+the headings and rows where a translation is missing have been removed.
+#+name: std-dictionary
+#+begin_src emacs-lisp :var basics=basics numbers=numbers atoms=atoms functions=functions
+(--remove (or (string-blank-p (cadr it))
+	      (equal (car it) (cadr it)))
+	  (append basics numbers atoms functions))
+#+end_src
+
+
+** Nojure.std
+
+This is where the translations happen. We write out a macro for every
+row of the dictionary with a one to one mapping. The output of this
+block is used in the Clojure block that follows to populate the namespace.
+#+name: nojure.std.macros
+#+begin_src emacs-lisp :var origin=std-dictionary
+(mapconcat
+ (lambda (elt)
+   (format "(defmacro %s\n    %S\n    [& body]\n    `(%s ~@body))\n\n" (cadr elt) (caddr elt) (car elt)))
+ origin)
+#+end_src
+
+~nojure.std~ is the equivalent of Clojure's standard library. You can
+require it with the ~:use~ keyword to include all of the macro's in one
+go. If you do so from the ~user~ namespace, you'll only have to do so
+once for your entire project.
+#+begin_src clojure :noweb yes :tangle babel/src/nojure/std.cljc :comments org
+(ns nojure.std)
+
+<<nojure.std.macros()>>
+#+end_src
+
+Macro's without arguments cannot be expanded the same way, so we need
+to hard-code a few things.
+#+begin_src clojure  :noweb yes :tangle babel/src/nojure/std.cljc :comments org
+(def sann true)
+(def usann false)
+#+end_src
+
+
+* String library
+
+
+
+* Compiler guidance
+
+#+begin_src clojure :tangle babel/deps.edn
+{:deps  {org.clojure/clojurescript {:mvn/version "1.11.54"}}
+ :paths ["src"]
+ :aliases
+ {:cljs {:main-opts ["--main" "cljs.main"
+                     "--compile-opts" "build.edn"
+                     "--compile"]}
+  :test {:extra-paths ["test"]
+         :extra-deps  {io.github.cognitect-labs/test-runner 
+                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts   ["-m" "cognitect.test-runner"]
+         :exec-fn     cognitect.test-runner.api/test}}}
+#+end_src
+
+#+begin_src clojure :tangle babel/build.edn
+{:main          nojure.browser-repl
+ :output-to     "../docs/docs.js"
+ :output-dir    "out"
+ :optimizations :advanced}
+#+end_src
+
+
+* Browser test
+
+#+begin_src clojurescript :tangle babel/src/nojure/browser_repl.cljs
+(ns nojure.browser-repl
+  (:require-macros [nojure.std :as nojure])
+  #_(:require [cljs.js :refer [empty-state eval-str js-eval]]))
+
+#_(defn evaluate [s cb]
+    (eval-str
+     (empty-state) s nil
+     {:eval js-eval :source-map true :context :expr}
+     cb))
+
+(def repl-el (js/document.getElementById "repl"))
+
+(def modifier (atom nil))
+
+(.addEventListener repl-el "keydown"
+                   (fn [event]
+                     (when (.-ctrlKey event)
+                       (reset! modifier true))))
+
+
+(.addEventListener repl-el "keyup"
+                   (fn [event]
+                     (when (.-ctrlKey event)
+                       (reset! modifier nil))))
+
+(.addEventListener repl-el "keypress"
+                   (fn [event]
+                     (if (and (= (.-key event) "Enter") @modifier)
+                       (nojure/svar (.-innerHTML repl-el))
+                       (js/console.log (.-key event)))))
+
+(set! (.-innerHTML repl-el) "(hvis (> 2 1)\n    (svar \"Yay!\")\n  (svar \"Når ble 1 mer enn 2?\"))")
+#+end_src
+
+
+* Unit tests
+
+#+begin_src clojure :tangle babel/test/nojure/std_test.cljc
+(ns nojure.std-test
+  (:use clojure.test
+        nojure.std))
+
+(deftest test-par?
+  (is (par? 2)))
+
+(deftest test-ikke-par?
+  (is (ikke (par? 1))))
+
+(deftest test-tall?
+  (is (tall? 100)))
+
+(deftest test-sett
+  (sett [verdi 42]
+        (is (= verdi 42))))
+
+(deftest test-når
+  (når (sann? sann)
+       (is sann)))
+
+(deftest test-sann?
+  (is (sann? sann)))
+
+(deftest test-tilfeldig-heltall
+  (is (tall? (tilfeldig-heltall 30))))
+
+(deftest test-svar
+  (svar "Kan sende svar. aka \"print\"")
+  (is sann))
+
+(kommentar
+ (deftest test-vil-ikke-kjøres
+   (is sann)))
+#+end_src

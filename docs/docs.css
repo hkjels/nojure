@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Fauna+One|JetBrains+Mono');
+
+:root {
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+  --headline: "Playfair Display";
+  --paragraph: "Fauna One";
+  --code: "JetBrains Mono";
+}
+
+body {
+  font-size: 2em;
+}
+
+body,
+p {
+    font-family: var(--paragraph);
+    line-height: 1.5em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--headline);
+    line-height: 1.5em;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+.subtitle {
+    font-size: .3em;
+    position: relative;
+    top: -3em;
+}
+
+:root {
+  --bg: #fbf2e3;
+  --bg-selected: #ffc75b;
+  --bg-pop: #f3eadb;
+  --fg: #393939;
+  --fg-inactive: #aba694;
+  --highlight: #d6f1d0;
+  --change: #2cc2de;
+  --ex-bg: #2ec77c;
+  --keyword: #bd9546;
+  --variable: #d97f37;
+  --constant: #fda229;
+  --string: #c57a6d;
+  --builtin: #77aa71;
+  --warning: #ff4136;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #232331;
+    --bg-selected: #ffc75b;
+    --bg-pop: #3e3e56;
+    --fg: #f8f8f8;
+    --fg-inactive: #9797c8;
+    --highlight: #363646;
+    --change: #be70ff;
+    --ex-bg: #2ec77c;
+    --variable: #f7df3e;
+    --keyword: #be9d5e;
+    --constant: #f7c96e;
+    --string: #d37c5d;
+    --builtin: #a7ad85;
+    --warning: #e53f67;
+  }
+}
+
+.org-string,
+.org-doc {
+    color: var(--string);
+}
+.org-variable {
+    color: var(--variable);
+}
+.org-keyword {
+    color: var(--keyword);
+}
+.org-constant {
+    color: var(--constant);
+}
+.org-function-name,
+.org-type,
+.org-builtin {
+    color: var(--builtin);
+}
+.org-warning {
+    color: var(--warning);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 2em 0 .5em 0;
+}
+
+#content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 5vw 5vw 5vw;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+thead {
+    border-top-color: transparent;
+}
+tbody {
+    border-bottom-color: transparent;
+}
+
+.org-src-container {
+    background: var(--bg-pop);
+    border-radius: .35em;
+    font-family: var(--code);
+    max-width: 100%;
+    padding: 1em;
+    overflow: auto;
+}

@@ -1,0 +1,45 @@
+#+setupfile: setup.org
+#+title: Nojure
+#+subtitle: Norwegian dialect of Clojure
+
+
+* Preface
+
+I want to teach my children some programming. Although their English
+is OK, there's a lot of unknown terms for them in the programming sphere.
+So; to lower the barrier, I've translated a lot of Clojure into
+Norwegian as a library of macro's.
+
+
+* Word of caution
+
+This library is by no means ready for production and could only serve
+the purpose of one to one teaching of children. Macro's come with it's
+own set of drawbacks. Mainly a disconnect between what you write and
+what is run. So if something fails; like wrong arity as an example,
+the Clojure environment will report back an error about the underlying
+pinning.
+
+
+* Usage
+
+In ~deps.edn:~
+#+begin_src clojure
+{nojure.std {:git/url "https://github.com/telenorcapture/nojure"}}
+#+end_src
+
+You can make all the macro's available on the REPL by including
+~nojure.std~ in the user namespace.
+#+begin_src clojure
+(ns user
+  (:use nojure.std))
+#+end_src
+
+Or you can include ~nojure.std~ from a specific namespace and even grab
+only the macro's you'd like.
+#+begin_src clojure
+(ns your.code
+  (:require
+   #?(:clj [nojure.std :refer [sann? usann?]]
+      :cljs [nojure.std :refer-macros [sann? usann?]])))
+#+end_src

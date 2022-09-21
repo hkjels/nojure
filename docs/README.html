@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-21 Wed 12:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nojure</title>
+<meta name="author" content="Henrik Kjerringvåg" />
+<meta name="generator" content="Org Mode" />
+<link rel='stylesheet' href='./docs.css'><script defer src='./docs.js'></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Nojure
+<br />
+<span class="subtitle">Norwegian dialect of Clojure</span>
+</h1>
+
+
+<div id="outline-container-orgf533a66" class="outline-2">
+<h2 id="orgf533a66">Preface</h2>
+<div class="outline-text-2" id="text-orgf533a66">
+<p>
+I want to teach my children some programming. Although their English
+is OK, there's a lot of unknown terms for them in the programming sphere.
+So; to lower the barrier, I've translated a lot of Clojure into
+Norwegian as a library of macro's.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orge15d35a" class="outline-2">
+<h2 id="orge15d35a">Word of caution</h2>
+<div class="outline-text-2" id="text-orge15d35a">
+<p>
+This library is by no means ready for production and could only serve
+the purpose of one to one teaching of children. Macro's come with it's
+own set of drawbacks. Mainly a disconnect between what you write and
+what is run. So if something fails; like wrong arity as an example,
+the Clojure environment will report back an error about the underlying
+pinning.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org8cff1ea" class="outline-2">
+<h2 id="org8cff1ea">Usage</h2>
+<div class="outline-text-2" id="text-org8cff1ea">
+<p>
+In <code>deps.edn:</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">{nojure.std {<span class="org-clojure-keyword">:</span><span class="org-type">git</span><span class="org-default">/</span><span class="org-clojure-keyword">url</span> <span class="org-string">"https://github.com/telenorcapture/nojure"</span>}}
+</pre>
+</div>
+
+<p>
+You can make all the macro's available on the REPL by including
+<code>nojure.std</code> in the user namespace.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(<span class="org-keyword">ns</span> <span class="org-type">user</span>
+  (<span class="org-clojure-keyword">:use</span> nojure.std))
+</pre>
+</div>
+
+<p>
+Or you can include <code>nojure.std</code> from a specific namespace and even grab
+only the macro's you'd like.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(<span class="org-keyword">ns</span> <span class="org-type">your.code</span>
+  (<span class="org-clojure-keyword">:require</span>
+   #?(<span class="org-clojure-keyword">:clj</span> [nojure.std <span class="org-clojure-keyword">:refer</span> [sann? usann?]]
+      <span class="org-clojure-keyword">:cljs</span> [nojure.std <span class="org-clojure-keyword">:refer-macros</span> [sann? usann?]])))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

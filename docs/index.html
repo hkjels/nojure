@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-21 Wed 12:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nojure</title>
+<meta name="author" content="Henrik Kjerringvåg" />
+<meta name="generator" content="Org Mode" />
+<link rel='stylesheet' href='./docs.css'><script defer src='./docs.js'></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Nojure
+<br />
+<span class="subtitle">Norwegian dialect of Clojure</span>
+</h1>
+<div id="repl" contenteditable="true"></div>
+
+<div id="outline-container-org35fac36" class="outline-2">
+<h2 id="org35fac36">Standard library</h2>
+<div class="outline-text-2" id="text-org35fac36">
+<p>
+These tables below are used to translate most of the Clojure standard
+library. There are some more obscure parts in there that's available,
+but I've decided to hide some of that complexity as this will get you
+quite far.
+</p>
+</div>
+
+<div id="outline-container-orgf9c32ec" class="outline-3">
+<h3 id="orgf9c32ec">Basics</h3>
+<div class="outline-text-3" id="text-orgf9c32ec">
+<table id="org0a3d550" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Clojure</th>
+<th scope="col" class="org-left">Nojure</th>
+<th scope="col" class="org-left">Docstring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">let</td>
+<td class="org-left">sett</td>
+<td class="org-left">(sett [x 1 y 2] (+ x y) ;; =&gt; 3</td>
+</tr>
+
+<tr>
+<td class="org-left">letfn</td>
+<td class="org-left">sett-funksjon</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">if</td>
+<td class="org-left">hvis</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">if-not</td>
+<td class="org-left">hvis-ikke</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">when</td>
+<td class="org-left">når</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">when-not</td>
+<td class="org-left">når-ikke</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">when-let</td>
+<td class="org-left">når-sett-funksjon</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">when-first</td>
+<td class="org-left">når-første</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">if-let</td>
+<td class="org-left">hvis-sett</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">cond</td>
+<td class="org-left">dersom</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">condp</td>
+<td class="org-left">dersom-p</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">case</td>
+<td class="org-left">hvis-at</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">when-some</td>
+<td class="org-left">når-noe</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">if-some</td>
+<td class="org-left">hvis-noe</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">not=</td>
+<td class="org-left">ikke=</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">or</td>
+<td class="org-left">eller</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">not</td>
+<td class="org-left">ikke</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">map</td>
+<td class="org-left">på-hver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">map-indexed</td>
+<td class="org-left">på-hver-indeksert</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">reduce</td>
+<td class="org-left">reduser</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">for</td>
+<td class="org-left">for</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">doseq</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">dotimes</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">while</td>
+<td class="org-left">imens</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">identical?</td>
+<td class="org-left">identisk?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">compare</td>
+<td class="org-left">sammenlign</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">true?</td>
+<td class="org-left">sann?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">false?</td>
+<td class="org-left">usann?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">instance?</td>
+<td class="org-left">eksempel?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">nil?</td>
+<td class="org-left">null?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">some?</td>
+<td class="org-left">noe?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">boolean?</td>
+<td class="org-left">bolsk?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">coll?</td>
+<td class="org-left">samling?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">comment</td>
+<td class="org-left">kommentar</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgd7154a6" class="outline-3">
+<h3 id="orgd7154a6">Numbers</h3>
+<div class="outline-text-3" id="text-orgd7154a6">
+<table id="org0af4ad1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Clojure</th>
+<th scope="col" class="org-left">Nojure</th>
+<th scope="col" class="org-left">Docstring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">zero?</td>
+<td class="org-left">null?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">even?</td>
+<td class="org-left">par?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">number?</td>
+<td class="org-left">tall?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">rand</td>
+<td class="org-left">tilfeldig</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">rand-int</td>
+<td class="org-left">tilfeldig-heltall</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org98f526c" class="outline-3">
+<h3 id="org98f526c">Atoms / state</h3>
+<div class="outline-text-3" id="text-org98f526c">
+<table id="org0768592" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Clojure</th>
+<th scope="col" class="org-left">Nojure</th>
+<th scope="col" class="org-left">Docstring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">swap!</td>
+<td class="org-left">skift!</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">reset!</td>
+<td class="org-left">nullstill!</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">compare-and-set!</td>
+<td class="org-left">sammenlign-og-set!</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">add-watch</td>
+<td class="org-left">legg-til-lytter</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">remove-watch</td>
+<td class="org-left">fjern-lytter</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">set-validator!</td>
+<td class="org-left">sett-godkjenner!</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">get-validator!</td>
+<td class="org-left">få-godkjenner!</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">assoc</td>
+<td class="org-left">slutte-til</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">assoc-in</td>
+<td class="org-left">slutte-til-i</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">atom</td>
+<td class="org-left">lager</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">update</td>
+<td class="org-left">oppdatere</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">update-in</td>
+<td class="org-left">oppdatere-i</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org16291ae" class="outline-3">
+<h3 id="org16291ae">Functions</h3>
+<div class="outline-text-3" id="text-org16291ae">
+<table id="org4ffab5c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Clojure</th>
+<th scope="col" class="org-left">Nojure</th>
+<th scope="col" class="org-left">Docstring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">constantly</td>
+<td class="org-left">konstant</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">comp</td>
+<td class="org-left">komp</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">complement</td>
+<td class="org-left">komplementer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">partial</td>
+<td class="org-left">delvis</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">juxt</td>
+<td class="org-left">nær-kontrast</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">memoize</td>
+<td class="org-left">memoriser</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">fnil</td>
+<td class="org-left">dersom-null</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">every-pred</td>
+<td class="org-left">for-hver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">some-fn</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">apply</td>
+<td class="org-left">bruk</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">as-&gt;</td>
+<td class="org-left">som-&gt;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">cond-&gt;</td>
+<td class="org-left">sjekk-&gt;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">cond-&gt;&gt;</td>
+<td class="org-left">sjekk-&gt;&gt;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">some-&gt;</td>
+<td class="org-left">noen-&gt;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">some-&gt;&gt;</td>
+<td class="org-left">noen-&gt;&gt;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">fn?</td>
+<td class="org-left">funksjon?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">ifn?</td>
+<td class="org-left">grensesnitt?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">print</td>
+<td class="org-left">svar</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org5ce1f21" class="outline-3">
+<h3 id="org5ce1f21">Dictionary</h3>
+<div class="outline-text-3" id="text-org5ce1f21">
+<p>
+Here we consolidate all the tables into one big dictionary. Note that
+the headings and rows where a translation is missing have been removed.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orgf305c3d">(<span class="org-keyword">--remove</span> (<span class="org-keyword">or</span> (string-blank-p (cadr it))
+              (equal (car it) (cadr it)))
+          (append basics numbers atoms functions))
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0da2cab" class="outline-3">
+<h3 id="org0da2cab">Nojure.std</h3>
+<div class="outline-text-3" id="text-org0da2cab">
+<p>
+This is where the translations happen. We write out a macro for every
+row of the dictionary with a one to one mapping. The output of this
+block is used in the Clojure block that follows to populate the namespace.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org59cb70f">(mapconcat
+ (<span class="org-keyword">lambda</span> (elt)
+   (format <span class="org-string">"(defmacro %s\n    %S\n    [&amp; body]\n    `(%s ~@body))\n\n"</span> (cadr elt) (caddr elt) (car elt)))
+ origin)
+</pre>
+</div>
+
+<p>
+<code>nojure.std</code> is the equivalent of Clojure's standard library. You can
+require it with the <code>:use</code> keyword to include all of the macro's in one
+go. If you do so from the <code>user</code> namespace, you'll only have to do so
+once for your entire project.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(<span class="org-keyword">ns</span> <span class="org-type">nojure.std</span>)
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sett</span>
+    <span class="org-doc">"(sett [x 1 y 2] (+ x y) ;; =&gt; 3"</span>
+    [&amp; body]
+    `(<span class="org-keyword">let</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sett-funksjon</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">letfn</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">hvis</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">if</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">hvis-ikke</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">if-not</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">n&#229;r</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">when</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">n&#229;r-ikke</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">when-not</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">n&#229;r-sett-funksjon</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">when-let</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">n&#229;r-f&#248;rste</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">when-first</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">hvis-sett</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">if-let</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">dersom</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">cond</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">dersom-p</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">condp</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">hvis-at</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">case</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">n&#229;r-noe</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">when-some</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">hvis-noe</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">if-some</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">ikke=</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(not= ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">eller</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">or</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">ikke</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(not ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">p&#229;-hver</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(map ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">p&#229;-hver-indeksert</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(map-indexed ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">reduser</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(reduce ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">imens</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">while</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">identisk?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(identical? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sammenlign</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(compare ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sann?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(true? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">usann?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(false? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">eksempel?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(instance? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">null?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(nil? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">noe?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(some? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">bolsk?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(boolean? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">samling?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(coll? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">kommentar</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">comment</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">null?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(zero? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">par?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(even? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">tall?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(number? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">tilfeldig</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(rand ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">tilfeldig-heltall</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(rand-int ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">skift!</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(swap! ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">nullstill!</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(reset! ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sammenlign-og-set!</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(compare-and-set! ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">legg-til-lytter</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(add-watch ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">fjern-lytter</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(remove-watch ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sett-godkjenner!</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(set-validator! ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">f&#229;-godkjenner!</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(get-validator! ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">slutte-til</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(assoc ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">slutte-til-i</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(assoc-in ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">lager</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(atom ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">oppdatere</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(update ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">oppdatere-i</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(update-in ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">konstant</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(constantly ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">komp</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(comp ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">komplementer</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(complement ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">delvis</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(partial ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">n&#230;r-kontrast</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(juxt ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">memoriser</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(memoize ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">dersom-null</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(fnil ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">for-hver</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(every-pred ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">bruk</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(apply ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">som-&gt;</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">as-&gt;</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sjekk-&gt;</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">cond-&gt;</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">sjekk-&gt;&gt;</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">cond-&gt;&gt;</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">noen-&gt;</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">some-&gt;</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">noen-&gt;&gt;</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(<span class="org-keyword">some-&gt;&gt;</span> ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">funksjon?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(fn? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">grensesnitt?</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(ifn? ~@body))
+
+(<span class="org-keyword">defmacro</span> <span class="org-function-name">svar</span>
+    <span class="org-doc">""</span>
+    [&amp; body]
+    `(print ~@body))
+
+
+</pre>
+</div>
+
+<p>
+Macro's without arguments cannot be expanded the same way, so we need
+to hard-code a few things.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(<span class="org-keyword">def</span> <span class="org-variable-name">sann</span> <span class="org-constant">true</span>)
+(<span class="org-keyword">def</span> <span class="org-variable-name">usann</span> <span class="org-constant">false</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1dc73a0" class="outline-2">
+<h2 id="org1dc73a0">String library</h2>
+</div>
+
+
+
+<div id="outline-container-orgef58260" class="outline-2">
+<h2 id="orgef58260">Compiler guidance</h2>
+<div class="outline-text-2" id="text-orgef58260">
+<div class="org-src-container">
+<pre class="src src-clojure">{<span class="org-clojure-keyword">:deps</span>  {<span class="org-type">org.clojure</span>/clojurescript {<span class="org-clojure-keyword">:</span><span class="org-type">mvn</span><span class="org-default">/</span><span class="org-clojure-keyword">version</span> <span class="org-string">"1.11.54"</span>}}
+ <span class="org-clojure-keyword">:paths</span> [<span class="org-string">"src"</span>]
+ <span class="org-clojure-keyword">:aliases</span>
+ {<span class="org-clojure-keyword">:cljs</span> {<span class="org-clojure-keyword">:main-opts</span> [<span class="org-string">"--main"</span> <span class="org-string">"cljs.main"</span>
+                     <span class="org-string">"--compile-opts"</span> <span class="org-string">"build.edn"</span>
+                     <span class="org-string">"--compile"</span>]}
+  <span class="org-clojure-keyword">:test</span> {<span class="org-clojure-keyword">:extra-paths</span> [<span class="org-string">"test"</span>]
+         <span class="org-clojure-keyword">:extra-deps</span>  {<span class="org-type">io.github.cognitect-labs</span>/test-runner 
+                       {<span class="org-clojure-keyword">:</span><span class="org-type">git</span><span class="org-default">/</span><span class="org-clojure-keyword">tag</span> <span class="org-string">"v0.5.1"</span> <span class="org-clojure-keyword">:</span><span class="org-type">git</span><span class="org-default">/</span><span class="org-clojure-keyword">sha</span> <span class="org-string">"dfb30dd"</span>}}
+         <span class="org-clojure-keyword">:main-opts</span>   [<span class="org-string">"-m"</span> <span class="org-string">"cognitect.test-runner"</span>]
+         <span class="org-clojure-keyword">:exec-fn</span>     <span class="org-type">cognitect.test-runner.api</span>/test}}}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure">{<span class="org-clojure-keyword">:main</span>          nojure.browser-repl
+ <span class="org-clojure-keyword">:output-to</span>     <span class="org-string">"../docs/docs.js"</span>
+ <span class="org-clojure-keyword">:output-dir</span>    <span class="org-string">"../docs"</span>
+ <span class="org-clojure-keyword">:optimizations</span> <span class="org-clojure-keyword">:advanced</span>}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0436f0a" class="outline-2">
+<h2 id="org0436f0a">Browser test</h2>
+<div class="outline-text-2" id="text-org0436f0a">
+<div class="org-src-container">
+<pre class="src src-clojurescript">(<span class="org-keyword">ns</span> <span class="org-type">nojure.browser-repl</span>
+  (<span class="org-clojure-keyword">:require-macros</span> [nojure.std <span class="org-clojure-keyword">:as</span> nojure])
+  #_<span class="org-comment">(:require [cljs.js :refer [empty-state eval-str js-eval]])</span>)
+
+#_<span class="org-comment">(defn evaluate [s cb]</span>
+<span class="org-comment">    (eval-str</span>
+<span class="org-comment">     (empty-state) s nil</span>
+<span class="org-comment">     {:eval js-eval :source-map true :context :expr}</span>
+<span class="org-comment">     cb))</span>
+
+(<span class="org-keyword">def</span> <span class="org-variable-name">repl-el</span> (<span class="org-type">js</span>/document.getElementById <span class="org-string">"repl"</span>))
+
+(<span class="org-keyword">def</span> <span class="org-variable-name">modifier</span> (atom <span class="org-constant">nil</span>))
+
+(.addEventListener repl-el <span class="org-string">"keydown"</span>
+                   (<span class="org-keyword">fn</span> [event]
+                     (<span class="org-keyword">when</span> (.-ctrlKey event)
+                       (reset! modifier <span class="org-constant">true</span>))))
+
+
+(.addEventListener repl-el <span class="org-string">"keyup"</span>
+                   (<span class="org-keyword">fn</span> [event]
+                     (<span class="org-keyword">when</span> (.-ctrlKey event)
+                       (reset! modifier <span class="org-constant">nil</span>))))
+
+(.addEventListener repl-el <span class="org-string">"keypress"</span>
+                   (<span class="org-keyword">fn</span> [event]
+                     (<span class="org-keyword">if</span> (<span class="org-keyword">and</span> (= (.-key event) <span class="org-string">"Enter"</span>) @modifier)
+                       (<span class="org-type">nojure</span>/svar (.-innerHTML repl-el))
+                       (<span class="org-type">js</span>/console.log (.-key event)))))
+
+(<span class="org-keyword">set!</span> (.-innerHTML repl-el) <span class="org-string">"(hvis (&gt; 2 1)</span><span class="org-string"><span class="org-bold">\n</span></span><span class="org-string">    (svar </span><span class="org-string"><span class="org-bold">\"</span></span><span class="org-string">Yay!</span><span class="org-string"><span class="org-bold">\"</span></span><span class="org-string">)</span><span class="org-string"><span class="org-bold">\n</span></span><span class="org-string">  (svar </span><span class="org-string"><span class="org-bold">\"</span></span><span class="org-string">N&#229;r ble 1 mer enn 2?</span><span class="org-string"><span class="org-bold">\"</span></span><span class="org-string">))"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf7e685a" class="outline-2">
+<h2 id="orgf7e685a">Unit tests</h2>
+<div class="outline-text-2" id="text-orgf7e685a">
+<div class="org-src-container">
+<pre class="src src-clojure">(<span class="org-keyword">ns</span> <span class="org-type">nojure.std-test</span>
+  (<span class="org-clojure-keyword">:use</span> clojure.test
+        nojure.std))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-par?</span>
+  (is (par? 2)))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-ikke-par?</span>
+  (is (ikke (par? 1))))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-tall?</span>
+  (is (tall? 100)))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-sett</span>
+  (sett [verdi 42]
+        (is (= verdi 42))))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-n&#229;r</span>
+  (n&#229;r (sann? sann)
+       (is sann)))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-sann?</span>
+  (is (sann? sann)))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-tilfeldig-heltall</span>
+  (is (tall? (tilfeldig-heltall 30))))
+
+(<span class="org-keyword">deftest</span> <span class="org-function-name">test-svar</span>
+  (svar <span class="org-string">"Kan sende svar. aka </span><span class="org-string"><span class="org-bold">\"</span></span><span class="org-string">print</span><span class="org-string"><span class="org-bold">\"</span></span><span class="org-string">"</span>)
+  (is sann))
+
+(kommentar
+ (<span class="org-keyword">deftest</span> <span class="org-function-name">test-vil-ikke-kj&#248;res</span>
+   (is sann)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
